@@ -4,8 +4,7 @@ import headerImg from "../assets/img/header-img.png";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import {Pinture} from "../components/Pinture";
-
+import { Pinture } from "../components/Pinture";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -41,15 +40,11 @@ export const Banner = () => {
 
     if (!isDeleting && updatedText === fullText) {
       setIsDeleting(true);
-      setIndex((prevIndex) => prevIndex - 1);
       setDelta(period);
     } else if (isDeleting && updatedText === "") {
       setIsDeleting(false);
       setLoopNum(loopNum + 1);
-      setIndex(1);
       setDelta(500);
-    } else {
-      setIndex((prevIndex) => prevIndex + 1);
     }
   };
 
@@ -76,11 +71,20 @@ export const Banner = () => {
                       <span className="wrap">{text}</span>
                     </span>
                   </h1>
-                    <Pinture/>
-                  <p>
-                    Soy una perona muy capas y proactiva y me encata apreder y apoyar con todos mis conocimientos .
+                  <Pinture className="pinture" />
+
+                  <p className="yo">
+                    I am a very capable and proactive person and I love to learn
+                    and support with all my knowledge.
                   </p>
-                  <button onClick={() => console.log("connect")}>
+                  <button
+                    onClick={() => {
+                      const section = document.querySelector("#projects");
+                      if (section) {
+                        section.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
                     Let’s Connect <ArrowRightCircle size={25} />
                   </button>
                 </div>
