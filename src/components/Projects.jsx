@@ -81,7 +81,7 @@ export const Projects = () => {
       title: "Business Startup",
       description: "Design & Funcionality",
       imgUrl: projImg11,
-      url: "https://google.com",
+      url: "https://mellow-marigold-b9e22c.netlify.app",
     },
   ];
 
