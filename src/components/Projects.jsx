@@ -45,7 +45,7 @@ export const Projects = () => {
       title: "Business Startup",
       description: "Design & Funcionality",
       imgUrl: projImg5,
-      url: " https://magnificent-toffee-a3b220.netlify.app/",
+      url: " https://calm-seahorse-1f6b77.netlify.app/",
     },
     {
       title: "Business Startup",
@@ -75,7 +75,7 @@ export const Projects = () => {
       title: "Business Startup",
       description: "Design & Funcionality",
       imgUrl: projImg10,
-      url: "https://magnificent-toffee-a3b220.netlify.app/",
+      url: "https://calm-seahorse-1f6b77.netlify.app/",
     },
     {
       title: "Business Startup",
