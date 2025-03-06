@@ -45,7 +45,7 @@ export const Projects = () => {
       title: "Business Startup",
       description: "Design & Funcionality",
       imgUrl: projImg5,
-      url: "https://musical-kashata-20b47d.netlify.app",
+      url: " https://magnificent-toffee-a3b220.netlify.app/",
     },
     {
       title: "Business Startup",
@@ -75,7 +75,7 @@ export const Projects = () => {
       title: "Business Startup",
       description: "Design & Funcionality",
       imgUrl: projImg10,
-      url: "https://musical-kashata-20b47d.netlify.app",
+      url: "https://magnificent-toffee-a3b220.netlify.app/",
     },
     {
       title: "Business Startup",
