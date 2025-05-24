@@ -40,3 +40,65 @@
 .read-the-docs {
   color: #888;
 }
+
+/* En App.css o tu archivo de estilos globales */
+
+/* !!! REEMPLAZA '.SELECTOR-DEL-BOTON-VOICEFLOW' con el ID o CLASE real que encuentres !!! */
+.SELECTOR-DEL-BOTON-VOICEFLOW {
+  /* Puedes elegir una o combinar animaciones, pero no satures */
+
+  /* Opción 1: Animación de pulso suave y continuo */
+  /* animation: vf-pulse 2.5s infinite ease-in-out; */
+  /* animation-delay: 4s; */ /* Que empiece después de unos segundos */
+
+  /* Opción 2: Una "sacudida" o "bote" inicial para llamar la atención */
+  /* Se ejecutará una vez, 3 segundos después de que el elemento esté disponible */
+  animation: vf-attention-bounce 1.5s ease-in-out 3s 1; /* nombre duracion timing-function delay iteraciones */
+}
+
+/* Definición de la animación de pulso */
+@keyframes vf-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+}
+
+/* Definición de la animación de "bote" para llamar la atención */
+@keyframes vf-attention-bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-20px) scale(1.1); /* Bota hacia arriba y crece un poco */
+  }
+  60% {
+    transform: translateY(-10px) scale(1.05); /* Segundo bote más pequeño */
+  }
+}
+
+/* Si Voiceflow añade una clase específica cuando el chat está cerrado y otra cuando está abierto, podrías usar eso.
+   Ejemplo HIPOTÉTICO de cómo podrías intentar que se "minimice" o cambie al estar cerrado:
+.SELECTOR-DEL-BOTON-VOICEFLOW.chat-is-closed {
+  transform: scale(0.8);
+  opacity: 0.7;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.SELECTOR-DEL-BOTON_VOICEFLOW.chat-is-open {
+  transform: scale(1);
+  opacity: 1;
+}
+Esto último es muy especulativo y depende 100% de cómo Voiceflow estructure su widget.
+*/

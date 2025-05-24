@@ -70,6 +70,7 @@ export const Contact = () => {
     <section className="contact" id="connect">
       <Container>
         <Row className="align-items-center">
+          
           <Col size={12} md={6}>
             <TrackVisibility>
               {({ isVisible }) => (
@@ -91,6 +92,7 @@ export const Contact = () => {
                     isVisible ? "animate__animated animate__fadeIn" : ""
                   }
                 >
+                  
                   <h2>Get In Touch</h2>
                   <form ref={formRef} onSubmit={enviarCorreo}>
                     <Row>
