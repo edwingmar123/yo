@@ -41,6 +41,266 @@
   color: #888;
 }
 
+/************ Estilos Responsivos Adicionales ************/
+
+/* --- Para Tablets (ej. pantallas entre 768px y 991px) --- */
+@media (max-width: 991px) {
+  .banner h1 {
+    font-size: 50px; /* Reducir tamaño de fuente del H1 del banner */
+  }
+  .banner p {
+    width: 100%; /* Permitir que el párrafo ocupe más ancho */
+    font-size: 17px;
+  }
+  .banner {
+    padding: 200px 0 80px 0; /* Ajustar padding del banner */
+  }
+
+  .skill h2 {
+    font-size: 38px; /* Reducir tamaño de H2 en skills */
+  }
+  .skill p {
+    font-size: 17px;
+    margin: 14px 0 50px 0;
+  }
+  .skill-bx {
+    padding: 50px 30px; /* Ajustar padding en skill-bx */
+  }
+  .skill-slider {
+    width: 90%; /* El carrusel puede ocupar más espacio */
+  }
+
+  .project h2 {
+    font-size: 38px;
+  }
+  .project p {
+    width: 80%; /* Permitir que el párrafo de descripción del proyecto sea más ancho */
+    font-size: 17px;
+  }
+  .project .nav.nav-pills {
+    width: 90%; /* Ajustar ancho de las pestañas de proyectos */
+  }
+
+  .contact img {
+    width: 80%; /* Ajustar imagen de contacto si es necesario */
+    margin: 0 auto 30px auto; /* Centrar y añadir margen inferior */
+  }
+  .contact h2 {
+    font-size: 38px;
+  }
+
+  .newsletter-bx {
+    padding: 60px 50px; /* Reducir padding del newsletter */
+    margin-bottom: 60px;
+    margin-top: -100px;
+  }
+  .footer img {
+    width: 40%; /* Ajustar tamaño del logo en el footer */
+  }
+}
+
+/* --- Para Dispositivos Móviles (ej. pantallas de hasta 767px) --- */
+@media (max-width: 767px) {
+  /* Navbar para móviles */
+  nav.navbar {
+    padding: 15px 0; /* Ajustar padding de la navbar */
+  }
+  nav.navbar.scrolled {
+    padding: 10px 0; /* Menos padding cuando se hace scroll */
+  }
+  nav.navbar a.navbar-brand {
+    width: 15%; /* Un poco más de espacio para el logo */
+  }
+  nav.navbar .navbar-nav {
+    /* Bootstrap generalmente maneja el colapso, pero puedes ajustar aquí si es necesario */
+    /* Por ejemplo, si los ítems del menú colapsado necesitan estilos específicos */
+    text-align: center;
+  }
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    padding: 10px 0; /* Más padding vertical para links en menú colapsado */
+    font-size: 16px;
+  }
+  .navbar-text {
+    display: block; /* Para que los íconos sociales y el botón se apilen */
+    text-align: center;
+  }
+  .navbar-text button {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 0; /* Remover margen si se apila */
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  .social-icon {
+    margin-top: 15px;
+    margin-left: 0;
+    display: block; /* O inline-block y centrar */
+  }
+  .social-icon a {
+    margin: 0 5px; /* Ajustar espaciado de íconos sociales */
+  }
+
+  /* Banner para móviles */
+  .banner {
+    padding: 150px 0 50px 0; /* Reducir significativamente el padding */
+  }
+  .banner .tagline {
+    font-size: 16px; /* Reducir tagline */
+    padding: 6px 8px;
+  }
+  .banner h1 {
+    font-size: 32px; /* Reducir drásticamente el H1 */
+  }
+  .banner p {
+    font-size: 15px; /* Reducir párrafo */
+    width: 100%;
+  }
+  .banner button {
+    font-size: 16px; /* Botón más pequeño */
+    margin-top: 30px;
+  }
+  .banner img {
+    /* La animación updown puede ser demasiado en móviles, podrías desactivarla: */
+    /* animation: none; */
+    width: 70%; /* O hacer la imagen más pequeña */
+    margin: 30px auto 0 auto;
+    display: block;
+  }
+
+  /* Skills para móviles */
+  .skill {
+    padding: 0 0 30px 0;
+  }
+  .skill-bx {
+    padding: 40px 20px; /* Menos padding */
+    border-radius: 40px; /* Reducir border-radius si se ve muy grande */
+    margin-top: -40px;
+  }
+  .skill h2 {
+    font-size: 28px; /* Reducir H2 */
+  }
+  .skill p {
+    font-size: 15px; /* Reducir párrafo */
+    margin: 10px 0 40px 0;
+  }
+  .skill-slider {
+    width: 100%; /* Ocupar todo el ancho */
+  }
+  .skill-slider .item img {
+    width: 60%; /* Ajustar tamaño de imágenes en el slider */
+  }
+  .background-image-left {
+    display: none; /* Ocultar imágenes de fondo decorativas que pueden no verse bien */
+  }
+
+  /* Projects para móviles */
+  .project {
+    padding: 40px 0;
+  }
+  .project h2 {
+    font-size: 28px;
+  }
+  .project p {
+    width: 90%; /* Párrafo ocupa más ancho */
+    font-size: 15px;
+    margin: 10px auto 20px auto;
+  }
+  .project .nav.nav-pills {
+    width: 100%; /* Pestañas ocupan todo el ancho */
+    display: flex;
+    flex-direction: column; /* Apilar las pestañas verticalmente */
+    border-radius: 20px; /* Ajustar border-radius */
+  }
+  .project .nav.nav-pills .nav-item {
+    width: 100%; /* Cada pestaña ocupa todo el ancho */
+  }
+  .project .nav.nav-pills .nav-link,
+  .nav-link#projects-tabs-tab-first,
+  .nav-link#projects-tabs-tab-second,
+  .nav-link#projects-tabs-tab-third {
+    border-radius: 0 !important; /* Remover bordes redondeados individuales */
+    border: none !important; /* Puede que quieras simplificar los bordes */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important; /* Separador simple */
+    font-size: 15px;
+    padding: 12px 0;
+  }
+  .project .nav.nav-pills .nav-link:last-child {
+    border-bottom: none !important; /* No borde en el último ítem */
+  }
+  .proj-txtx h4 {
+    font-size: 20px; /* Ajustar tamaño de texto en hover de proyecto */
+  }
+  .proj-txtx span {
+    font-size: 12px;
+  }
+  .background-image-right {
+    display: none; /* Ocultar imágenes de fondo decorativas */
+  }
+
+  /* Contact Form para móviles */
+  /* Tu React-Bootstrap (Col size={12} md={6}) ya debería manejar el apilamiento de columnas. */
+  /* Estos son ajustes adicionales si son necesarios: */
+  .contact {
+    padding: 40px 15px 100px 15px; /* Ajustar padding general y lateral */
+  }
+  .contact img {
+    width: 100%; /* Imagen de contacto ocupa todo el ancho */
+    margin-bottom: 30px;
+  }
+  .contact h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .contact form input,
+  .contact form textarea {
+    font-size: 16px;
+    padding: 15px 20px;
+  }
+  .contact form button {
+    padding: 12px 30px;
+    font-size: 16px;
+    width: 100%; /* Botón de formulario ocupa todo el ancho */
+  }
+
+  /* Footer para móviles */
+  .footer {
+    padding: 0 15px 30px 15px;
+  }
+  .newsletter-bx {
+    padding: 40px 25px; /* Menos padding */
+    border-radius: 30px;
+    margin-bottom: 40px;
+    margin-top: -60px; /* Ajustar superposición */
+  }
+  .newsletter-bx h3 {
+    font-size: 18px; /* Reducir título de newsletter */
+  }
+  .new-email-bx {
+    flex-direction: column; /* Apilar input y botón de email */
+  }
+  .new-email-bx input {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .new-email-bx button {
+    width: 100%;
+    padding: 15px 20px;
+  }
+  .footer img {
+    width: 50%; /* Logo en footer más grande */
+    display: block;
+    margin: 0 auto 20px auto; /* Centrar logo */
+  }
+  .footer p {
+    text-align: center; /* Centrar texto de copyright */
+    font-size: 12px;
+  }
+  .footer .social-icon {
+    /* Asegurar que los íconos sociales en el footer también se centren si es necesario */
+    text-align: center;
+  }
+}
+
 /* En App.css o tu archivo de estilos globales */
 
 /* !!! REEMPLAZA '.SELECTOR-DEL-BOTON-VOICEFLOW' con el ID o CLASE real que encuentres !!! */
