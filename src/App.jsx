@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css"; // Aquí añadiremos los estilos para animar el botón
+import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Skills } from "./components/Skills";
@@ -11,7 +11,54 @@ import { Footer } from "./components/Footer";
 function App() {
   useEffect(() => {
     const VOICEFLOW_SCRIPT_ID = "voiceflow-chat-widget-script";
-    const PROACTIVE_ENGAGEMENT_DELAY = 5000; // 5 segundos (ajusta según necesites)
+    const PROACTIVE_ENGAGEMENT_DELAY = 5000;
+
+    const playAttentionSound = () => {
+      try {
+        const customSound = new Audio("/sounds/notification.mp3");
+        customSound
+          .play()
+          .catch((error) =>
+            console.warn("Reproducción automática de sonido fallida:", error)
+          );
+      } catch (error) {
+        console.error("Error al intentar reproducir sonido:", error);
+      }
+    };
+
+    const startFloatingMessageLoop = () => {
+      let tooltip = null;
+
+      const showMessage = () => {
+        if (tooltip) return;
+
+        tooltip = document.createElement("div");
+        tooltip.className = "chat-float-message";
+        tooltip.innerText = "¡Acá estoy, úsame!";
+
+        tooltip.addEventListener("click", () => {
+          tooltip.remove();
+          tooltip = null;
+        });
+
+        document.body.appendChild(tooltip);
+
+        setTimeout(() => {
+          if (tooltip) {
+            tooltip.remove();
+            tooltip = null;
+          }
+        }, 10000);
+      };
+
+      showMessage();
+
+      const intervalId = setInterval(() => {
+        showMessage();
+      }, 10000);
+
+      return () => clearInterval(intervalId);
+    };
 
     const initializeAndEngageVoiceflow = () => {
       if (
@@ -23,67 +70,33 @@ function App() {
           verify: { projectID: "6830825fe3e4ba215ad09193" },
           url: "https://general-runtime.voiceflow.com",
           versionID: "production",
-          // Revisa la documentación de Voiceflow por si puedes añadir aquí
-          // configuraciones para autoOpen, proactiveMessage, launcher animations, etc.
         };
 
         window.voiceflow.chat.load(voiceflowConfig);
 
-        // Intenta acciones proactivas después de un retraso.
-        // Es ideal si Voiceflow tiene un evento 'ready' para esto.
-        // Si no, usamos setTimeout como un intento.
         const attemptProactiveActions = () => {
           setTimeout(() => {
             if (window.voiceflow && window.voiceflow.chat) {
-              // 1. "Expandir" / Llamar la atención abriendo el chat:
               if (typeof window.voiceflow.chat.open === "function") {
-                console.log(
-                  "Intentando abrir el chat de Voiceflow proactivamente..."
-                );
+                console.log("Abriendo el chat proactivamente...");
                 window.voiceflow.chat.open();
               }
-
-              // 2. Mensaje "Hola, ¿en qué te puedo ayudar?":
-              // ESTO DEBE SER EL PRIMER MENSAJE EN TU FLUJO DE VOICEFLOW.
-              // Se mostrará cuando el chat se abra.
-
-              // 3. Sonido (USAR CON EXTREMA PRECAUCIÓN Y SOLO SI ES NECESARIO):
-              // playAttentionSound(); // Llama a la función de sonido definida abajo
+              playAttentionSound();
+              startFloatingMessageLoop();
             }
           }, PROACTIVE_ENGAGEMENT_DELAY);
         };
 
         if (typeof window.voiceflow.chat.on === "function") {
           window.voiceflow.chat.on("ready", () => {
-            // 'ready' es un evento común, verifica el correcto en Voiceflow
-            console.log("Voiceflow chat widget está listo (evento 'ready').");
+            console.log("Voiceflow chat listo.");
             attemptProactiveActions();
           });
         } else {
-          // Fallback si no hay evento 'ready'
-          console.log(
-            "No hay evento 'ready' de Voiceflow, se intentarán acciones proactivas tras un delay post-load."
-          );
           attemptProactiveActions();
         }
-      } else {
-        console.error(
-          "Función window.voiceflow.chat.load no disponible. El script de Voiceflow puede no haberse cargado correctamente."
-        );
       }
     };
-
-    // --- Función para reproducir sonido (opcional y con precaución) ---
-    // const playAttentionSound = () => {
-    //   try {
-    //     // Reemplaza '/ruta/a/tu/sonido-notificacion.mp3' con la URL de un sonido CORTO y SUTIL.
-    //     const customSound = new Audio('/ruta/a/tu/sonido-notificacion.mp3');
-    //     customSound.play().catch(error => console.warn("Reproducción automática de sonido fallida:", error));
-    //   } catch (error) {
-    //     console.error("Error al intentar reproducir sonido:", error);
-    //   }
-    // };
-    // --- Fin función de sonido ---
 
     if (!document.getElementById(VOICEFLOW_SCRIPT_ID)) {
       const script = document.createElement("script");
@@ -96,6 +109,11 @@ function App() {
     } else {
       initializeAndEngageVoiceflow();
     }
+
+    return () => {
+      const tooltip = document.querySelector(".chat-float-message");
+      if (tooltip) tooltip.remove();
+    };
   }, []);
 
   return (

@@ -362,3 +362,87 @@
 }
 Esto último es muy especulativo y depende 100% de cómo Voiceflow estructure su widget.
 */
+
+/* Animación para el launcher del chatbot */
+.vf-chat-launcher {
+  animation: pulse 1.5s infinite;
+  background-color: #ff7f50 !important;
+  box-shadow: 0 0 10px rgba(255, 127, 80, 0.8);
+}
+vf-chat-launcher {
+  animation: vibrate 0.3s linear infinite;
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  z-index: 9998 !important;
+}
+
+/* Pulso suave */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Tooltip proactivo */
+.chat-tooltip {
+  position: absolute;
+  bottom: 70px;
+  left: -60px;
+  width: 160px;
+  background: #333;
+  color: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in;
+  z-index: 9999;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-float-message {
+  position: fixed;
+  right: 72px;
+  bottom: 85px;
+  background: #00aaff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}

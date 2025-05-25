@@ -165,7 +165,7 @@ nav.navbar {
   padding: 18px 0;
   position: fixed;
   width: 100%;
-  top:0;
+  top: 0;
   left: -0%;
   z-index: 9999;
   transition: 0.32s ease-in-out;
@@ -553,7 +553,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .proj-img {
-
   height: 250px;
 }
 /************ Projects Css ************/
@@ -723,7 +722,92 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   left: 10%;
 }
 
-.yo{
+.yo {
   position: relative;
   top: 45px;
+}
+
+/* Vibración del botón del chat */
+.vf-chat-launcher {
+  animation: vibrate 0.3s linear infinite;
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  z-index: 9998 !important;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Tooltip encima del launcher */
+.chat-tooltip {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  transform: translateX(30%);
+  background: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  animation: fadeInTooltip 0.5s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+@keyframes fadeInTooltip {
+  from {
+    opacity: 0;
+    transform: translateY(10px) translateX(30%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateX(30%);
+  }
+}
+
+.chat-float-message {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+  background: #00aaff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 170, 255, 0.6);
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
 }
